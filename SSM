@@ -1,0 +1,43 @@
+Pre-requisites
+
+EC2 Instance must have:
+
+The SSM Agent installed (Amazon Linux 2 and latest Ubuntu AMIs usually have it pre-installed).
+
+An IAM Role attached with at least this policy:
+
+AmazonSSMManagedInstanceCore
+
+
+Outbound internet access (or VPC endpoint for SSM).
+
+Your user (in AWS Console or CLI) must have permissions for:
+
+AmazonSSMFullAccess
+
+Method 1: Connect via AWS Console
+
+Go to EC2 → Instances.
+
+Select your instance.
+
+Click Connect → Session Manager → Connect.
+✅ You’ll get a shell directly in your browser.
+
+Method 2: Connect via AWS CLI
+
+Make sure AWS CLI is configured:
+
+aws configure
+
+
+(Enter your access key, secret key, region, and output format)
+
+Run this command to start a session:
+
+aws ssm start-session --target i-xxxxxxxxxxxxx
+
+
+Replace i-xxxxxxxxxxxxx with your EC2 Instance ID.
+
+✅ This drops you into a terminal session on the instance.
